@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="en-ZA">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Nicom Online | AI-powered web apps, Cape Town</title>
+  <meta name="description" content="Nicom Online builds websites and web apps with AI built in: sales and support agents, voice agents, lead qualification and workflow automation." />
+  <link rel="preconnect" href="https://api.fontshare.com" />
+  <link href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@500,700,800&f[]=satoshi@400,500,700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%23050705'/><text x='16' y='22' font-family='Arial' font-weight='900' font-size='17' text-anchor='middle' fill='%2339ff88'>N</text></svg>" />
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <div class="bg-grid" aria-hidden="true"></div>
+  <div class="bg-glow" aria-hidden="true"></div>
+
+  <header class="nav">
+    <a href="#top" class="brand" aria-label="Nicom Online home">nicom<span>.online</span></a>
+    <nav aria-label="Main">
+      <a href="#lab">AI Lab</a>
+      <a href="#how">How it works</a>
+      <a href="#services">Services</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <span class="mode-chip" id="modeChip" title="AI connection status"><i></i><b>Checking AI…</b></span>
+  </header>
+
+  <main id="top">
+    <!-- HERO -->
+    <section class="hero">
+      <p class="eyebrow reveal">Where your digital journey begins</p>
+      <h1 class="reveal">Websites that <em>think</em>,<br />talk and sell.</h1>
+      <p class="lede reveal">Nicom Online builds web apps with AI built into the core: agents that answer customers, qualify leads, plan content and pick up the phone. This page is a working demo. Try it below.</p>
+      <div class="hero-cta reveal">
+        <a class="btn btn-primary" href="#lab">Try the AI demos</a>
+        <a class="btn btn-ghost" href="#how">See how it is built</a>
+      </div>
+      <dl class="stats reveal">
+        <div><dt>24/7</dt><dd>AI agents never clock off</dd></div>
+        <div><dt>4</dt><dd>live AI features on this page</dd></div>
+        <div><dt>&lt;2s</dt><dd>typical AI response time</dd></div>
+      </dl>
+    </section>
+
+    <!-- AI LAB -->
+    <section id="lab" class="section">
+      <div class="section-head reveal">
+        <p class="eyebrow">AI Lab</p>
+        <h2>Four AI features, running live</h2>
+        <p>Each tab calls a real serverless API route on this site. The same building blocks go into the web apps we build for clients.</p>
+      </div>
+
+      <div class="lab glass reveal">
+        <div class="tabs" role="tablist" aria-label="AI demos">
+          <button role="tab" aria-selected="true" aria-controls="p-chat" id="t-chat">Sales &amp; support agent</button>
+          <button role="tab" aria-selected="false" aria-controls="p-brief" id="t-brief">Website planner</button>
+          <button role="tab" aria-selected="false" aria-controls="p-lead" id="t-lead">Lead qualifier</button>
+          <button role="tab" aria-selected="false" aria-controls="p-voice" id="t-voice">Voice agent</button>
+        </div>
+
+        <!-- Chat -->
+        <div class="panel" role="tabpanel" id="p-chat" aria-labelledby="t-chat">
+          <div class="panel-grid">
+            <div class="chat">
+              <div class="chat-log" id="chatLog" aria-live="polite"></div>
+              <div class="chips" id="chatChips">
+                <button>How much does a website cost?</button>
+                <button>Can AI answer my customer emails?</button>
+                <button>I want to sell online</button>
+              </div>
+              <form class="chat-input" id="chatForm">
+                <label class="sr-only" for="chatText">Message Nova</label>
+                <input id="chatText" autocomplete="off" placeholder="Ask Nova anything about your business…" />
+                <button class="btn btn-primary" type="submit">Send</button>
+              </form>
+            </div>
+            <aside class="explain">
+              <h3>What is happening</h3>
+              <ol>
+                <li>Your message goes to <code>/api/chat</code>.</li>
+                <li>The route adds Nicom's business knowledge as a system prompt.</li>
+                <li>A language model writes the reply; the last 12 turns give it memory.</li>
+                <li>On a client site, the agent can also book calls or log the lead to a CRM.</li>
+              </ol>
+            </aside>
+          </div>
+        </div>
+
+        <!-- Brief -->
+        <div class="panel" role="tabpanel" id="p-brief" aria-labelledby="t-brief" hidden>
+          <div class="panel-grid">
+            <form class="form" id="briefForm">
+              <label>Business name<input name="business" required value="Kloof Street Coffee" /></label>
+              <label>Industry<input name="industry" required value="Coffee shop" /></label>
+              <label>Main goal<input name="goal" value="Get more online orders" /></label>
+              <label>Audience<input name="audience" value="Students and remote workers in Cape Town" /></label>
+              <button class="btn btn-primary" type="submit">Generate website plan</button>
+            </form>
+            <div class="output" id="briefOut">
+              <p class="empty">Your AI-generated site plan appears here: headline, pages, AI features and SEO keywords.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Lead -->
+        <div class="panel" role="tabpanel" id="p-lead" aria-labelledby="t-lead" hidden>
+          <div class="panel-grid">
+            <form class="form" id="leadForm">
+              <label>Name<input name="name" value="Thandi Mokoena" /></label>
+              <label>Company<input name="company" value="Mokoena Interiors" /></label>
+              <label>Email<input name="email" type="email" value="thandi@example.co.za" /></label>
+              <label>Message<textarea name="message" rows="4" required>Hi, we need a new website with an online shop for our furniture, plus an AI chatbot to answer delivery questions. We want to launch before December. Budget around R40k.</textarea></label>
+              <button class="btn btn-primary" type="submit">Analyse enquiry</button>
+            </form>
+            <div class="output" id="leadOut">
+              <p class="empty">The AI scores the lead, tags services, sets urgency and drafts a reply for your team.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Voice -->
+        <div class="panel" role="tabpanel" id="p-voice" aria-labelledby="t-voice" hidden>
+          <div class="voice">
+            <button class="orb" id="voiceBtn" aria-label="Start talking to the voice agent"><span></span></button>
+            <p class="voice-status" id="voiceStatus">Tap the orb and ask a question out loud.</p>
+            <div class="voice-transcript" id="voiceLog" aria-live="polite"></div>
+            <form class="chat-input" id="voiceForm">
+              <label class="sr-only" for="voiceText">Or type to the voice agent</label>
+              <input id="voiceText" placeholder="No microphone? Type here and Nova will speak the answer" />
+              <button class="btn btn-ghost" type="submit">Speak</button>
+            </form>
+            <p class="hint">Uses your browser's speech recognition and speech synthesis, with replies from <code>/api/chat</code> in voice mode. Works best in Chrome or Edge.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- HOW -->
+    <section id="how" class="section">
+      <div class="section-head reveal">
+        <p class="eyebrow">How we integrate AI</p>
+        <h2>The architecture behind every Nicom web app</h2>
+        <p>AI is not a widget bolted on at the end. It sits in the server layer, where it can read your business data safely and take action.</p>
+      </div>
+
+      <ol class="pipeline">
+        <li class="glass reveal from-left"><span class="step">01</span><h3>Interface</h3><p>Chat, forms, voice and buttons in the browser. Fast, accessible, mobile-first.</p></li>
+        <li class="glass reveal from-left"><span class="step">02</span><h3>Serverless API</h3><p>Vercel functions in <code>/api</code> hold the API keys, validate input and limit abuse.</p></li>
+        <li class="glass reveal from-right"><span class="step">03</span><h3>Model + context</h3><p>A language model gets your services, prices, FAQs and tone as context, and returns text or structured JSON.</p></li>
+        <li class="glass reveal from-right"><span class="step">04</span><h3>Actions</h3><p>Results flow into CRM, email, WhatsApp, calendars and dashboards through automations.</p></li>
+      </ol>
+
+      <div class="code-wrap reveal">
+        <div class="code-head"><span>api/chat.js</span><span class="muted">simplified</span></div>
+<pre><code><span class="c">// Runs on Vercel. The API key never reaches the browser.</span>
+<span class="k">export default async function</span> handler(req, res) {
+  <span class="k">const</span> { messages } = req.body;
+  <span class="k">const</span> reply = <span class="k">await</span> complete({
+    system: BUSINESS_CONTEXT,          <span class="c">// services, hours, tone, rules</span>
+    messages: messages.slice(-12),     <span class="c">// short-term memory</span>
+  });
+  <span class="k">await</span> crm.logConversation(reply);  <span class="c">// optional action step</span>
+  res.json({ reply });
+}</code></pre>
+      </div>
+
+      <div class="principles">
+        <div class="glass reveal"><h3>Grounded</h3><p>Agents answer from your real business info and say when they do not know.</p></div>
+        <div class="glass reveal"><h3>Private</h3><p>Keys and customer data stay server-side. POPIA-aware data handling.</p></div>
+        <div class="glass reveal"><h3>Fail-safe</h3><p>If the model is unavailable the site falls back gracefully. It never breaks.</p></div>
+        <div class="glass reveal"><h3>Human in the loop</h3><p>Hot leads and tricky questions are handed to your team with a summary.</p></div>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section id="services" class="section">
+      <div class="section-head reveal">
+        <p class="eyebrow">Services</p>
+        <h2>Everything your business needs online</h2>
+      </div>
+      <div class="services">
+        <article class="glass reveal from-left"><h3>Web design &amp; eCommerce</h3><p>Fast, mobile-first sites and stores that sell 24/7, locally and globally.</p></article>
+        <article class="glass reveal"><h3>AI sales agents</h3><p>Chat agents that answer questions, recommend products and capture leads.</p></article>
+        <article class="glass reveal from-right"><h3>AI support agents</h3><p>Instant answers on web, WhatsApp and email, with smart escalation.</p></article>
+        <article class="glass reveal from-left"><h3>AI voice agents</h3><p>Natural-sounding phone agents for bookings, FAQs and after-hours calls.</p></article>
+        <article class="glass reveal"><h3>Workflow automation</h3><p>Connect forms, CRM, invoicing and reporting so admin runs itself.</p></article>
+        <article class="glass reveal from-right"><h3>SEO &amp; Google Ads</h3><p>Get found locally and turn searches into paying customers.</p></article>
+        <article class="glass reveal from-left"><h3>Social media &amp; content</h3><p>Planned, created and managed content across every platform.</p></article>
+        <article class="glass reveal"><h3>SMS &amp; email marketing</h3><p>Autoresponders, campaigns and reminders, personalised by AI.</p></article>
+        <article class="glass reveal from-right accent"><h3>Not sure where to start?</h3><p>Ask Nova in the AI Lab, or book a free consultation.</p><a href="#contact" class="link">Book a call →</a></article>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="section">
+      <div class="contact glass reveal">
+        <div>
+          <p class="eyebrow">Contact</p>
+          <h2>Start your digital journey</h2>
+          <p>Send an enquiry and our AI lead agent reads it instantly, so the right person gets back to you fast.</p>
+          <ul class="details">
+            <li><span>Phone / WhatsApp</span><a href="tel:+27626616896">+27 62 661 6896</a></li>
+            <li><span>Email</span><a href="mailto:info@nikomonline.co.za">info@nikomonline.co.za</a></li>
+            <li><span>Office</span>10 Union Street, Gardens, Cape Town</li>
+            <li><span>Hours</span>Mon–Fri, 08:00–18:00</li>
+          </ul>
+        </div>
+        <form class="form" id="contactForm">
+          <label>Name<input name="name" required /></label>
+          <label>Email<input name="email" type="email" required /></label>
+          <label>Company<input name="company" /></label>
+          <label>How can we help?<textarea name="message" rows="4" required></textarea></label>
+          <button class="btn btn-primary" type="submit">Send enquiry</button>
+          <p class="form-note" id="contactNote" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <span>© <span id="year"></span> Nicom Online · Cape Town</span>
+    <a href="https://www.nicomonline.co.za" target="_blank" rel="noopener">www.nicomonline.co.za</a>
+  </footer>
+
+  <script src="/app.js" type="module"></script>
+</body>
+</html>
