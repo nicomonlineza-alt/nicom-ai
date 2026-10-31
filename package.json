@@ -1,0 +1,11 @@
+{
+  "name": "nicom-ai-web-app",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Nicom Online AI web app: sales & support agent, website planner, lead qualifier and voice agent on Vercel serverless functions.",
+  "type": "module",
+  "scripts": {
+    "dev": "node dev-server.mjs"
+  },
+  "engines": { "node": ">=18" }
+}
