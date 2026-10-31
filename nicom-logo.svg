@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title">
+<title id="title">Nicom-AI logo</title>
+<defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#00d957"/><stop offset="1" stop-color="#00d1ff"/></linearGradient><filter id="glow"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+<circle cx="64" cy="64" r="60" fill="#071116" stroke="#ffffff" stroke-opacity=".2" stroke-width="2"/>
+<path d="M18 83 39 58 50 69 70 39 91 66 101 55 114 83Z" fill="none" stroke="url(#g)" stroke-width="4" stroke-linejoin="round" filter="url(#glow)"/>
+<path d="M26 88H102" stroke="#00d957" stroke-width="3" stroke-linecap="round" opacity=".85"/>
+<path d="M42 98V78L64 98V78" fill="none" stroke="#f4f8fa" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
