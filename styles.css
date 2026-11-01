@@ -89,3 +89,28 @@ body:after{opacity:.105}
   border-color:rgba(185,193,198,.42);
   box-shadow:inset 0 1px 0 rgba(255,255,255,.12),0 16px 40px rgba(0,0,0,.28);
 }
+
+
+/* Vibrant yellow call-to-action: Your next website should do more */
+.banner.glass{
+  position:relative;
+  overflow:hidden;
+  background:linear-gradient(125deg,#fff36a 0%,#ffd51e 48%,#ffb800 100%);
+  color:#17200a;
+  border:1px solid rgba(255,244,130,.95);
+  box-shadow:0 0 0 1px rgba(255,211,0,.24),0 0 32px rgba(255,202,0,.32),0 18px 48px rgba(0,0,0,.3);
+}
+.banner.glass:before{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:radial-gradient(circle at 90% 0%,rgba(255,255,255,.65),transparent 38%),linear-gradient(115deg,transparent 35%,rgba(255,255,255,.22) 50%,transparent 65%);
+}
+.banner.glass>*{position:relative;z-index:1}
+.banner.glass h3{color:#17200a;text-shadow:0 1px 0 rgba(255,255,255,.35);font-size:clamp(1.35rem,2.7vw,2rem)}
+.banner.glass p{color:#30320f}
+.banner.glass .btn.primary{background:#102a17;color:#fff;border:1px solid rgba(255,255,255,.35);box-shadow:0 5px 18px rgba(35,55,0,.22)}
+.banner.glass .btn.primary:hover{background:#194525;box-shadow:0 0 22px rgba(28,65,0,.3)}
+.banner.glass:hover{border-color:#fff7b0;box-shadow:0 0 0 1px rgba(255,236,75,.35),0 0 42px rgba(255,202,0,.42),0 22px 54px rgba(0,0,0,.34)}
+@media(prefers-reduced-motion:reduce){.banner.glass{transition:none}}
