@@ -116,3 +116,8 @@ body:after{opacity:.105}
 @media(prefers-reduced-motion:reduce){.banner.glass{transition:none}}
 
 .tools-grid > .card{background:linear-gradient(140deg,rgba(173,216,255,.32),rgba(120,190,255,.20));border-color:rgba(145,205,255,.58)}.tools-grid > .card:hover{background:linear-gradient(140deg,rgba(190,225,255,.42),rgba(135,200,255,.28));border-color:rgba(165,220,255,.82)}
+
+
+/* Dark blue background for the Products & Services feature card */
+.products-services-card{background:linear-gradient(135deg,rgba(7,35,86,.94),rgba(10,62,126,.88));border-color:rgba(88,158,255,.55);box-shadow:inset 0 1px 0 rgba(190,220,255,.14),0 16px 44px rgba(0,0,0,.32),0 0 24px rgba(20,90,190,.12)}
+.products-services-card:hover{border-color:rgba(115,180,255,.75);box-shadow:inset 0 1px 0 rgba(190,220,255,.18),0 18px 48px rgba(0,0,0,.36),0 0 28px rgba(20,90,190,.2)}
