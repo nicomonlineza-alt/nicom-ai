@@ -76,6 +76,11 @@ if (prospectForm) {
       status: "New",
       followUp: "",
       source: "Google Maps + Apollo",
+      domain: business.domain,
+      website: business.website,
+      address: business.address,
+      category: business.category,
+      decisionMakers: business.decisionMakers,
       createdAt: new Date().toISOString()
     });
     save();
