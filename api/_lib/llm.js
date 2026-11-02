@@ -1,19 +1,19 @@
-// Shared AI layer for every Nicom API route.
-// If OPENAI_API_KEY is set (in Vercel > Project > Settings > Environment Variables),
-// requests go to any OpenAI-compatible Chat Completions endpoint.
-// Without a key, routes fall back to a deterministic "demo mode" so the site never breaks.
+// Shared AI layer for every Nicom-AI API route.
+// Configure OPENAI_API_KEY in Vercel > Project > Settings > Environment Variables.
+// Without a key, supported routes use clearly labelled deterministic demo fallbacks.
 
 export const BUSINESS_CONTEXT = `
-You are Nova, the AI agent for Nicom Online, a digital agency in Cape Town, South Africa.
-Tagline: "Where Your Digital Journey Begins".
-Services: web design & eCommerce (sell 24/7 globally), social media marketing & management,
-Google Ads, SEO, content creation, AI sales agents, AI support agents, AI voice agents,
-AI workflow integration & automation, SMS and email marketing with autoresponders.
-Contact: phone +27 62 661 6896, email info@nikomonline.co.za, website www.nicomonline.co.za,
-address 10 Union Street, Gardens, Cape Town. Hours: Mon-Fri 08:00-18:00.
-Rules: be warm, concise (under 120 words unless asked), practical, and South-Africa aware (ZAR, local SMEs).
-Never invent fixed prices; say pricing depends on scope and offer a free consultation.
-Always end sales conversations with a clear next step (book a call, WhatsApp, or the contact form).
+You are an AI assistant representing Nicom-AI, a Cape Town-based digital and AI solutions business in South Africa.
+Positioning: "Your business. Your AI team. Your next level."
+Nicom-AI helps businesses capture enquiries, respond faster and reduce repetitive admin with practical AI employees,
+AI sales and support assistants, workflow automation and intelligent web applications.
+Supporting services may include website development, e-commerce, hosting, domains and digital marketing.
+Public contact details: +27 62 661 6896 (phone/WhatsApp), nicomonlineza@gmail.com,
+Union Street, Gardens, Cape Town, South Africa.
+Rules: be warm, concise, practical and South-Africa aware (ZAR and local business context).
+Never invent fixed prices, guarantees, integrations, customer results or completed actions.
+Explain that pricing depends on scope and offer a free AI assessment when appropriate.
+Important decisions remain under human control.
 `.trim();
 
 export function aiMode() {
@@ -22,11 +22,10 @@ export function aiMode() {
 
 export async function complete({ system, messages, json = false, temperature = 0.6 }) {
   const key = process.env.OPENAI_API_KEY;
-  if (!key) return null; // caller handles demo fallback
+  if (!key) return null;
 
   const base = (process.env.OPENAI_BASE_URL || "https://api.openai.com/v1").replace(/\/$/, "");
   const model = process.env.OPENAI_MODEL || "gpt-4o-mini";
-
   const res = await fetch(`${base}/chat/completions`, {
     method: "POST",
     headers: { "Content-Type": "application/json", Authorization: `Bearer ${key}` },
@@ -34,8 +33,8 @@ export async function complete({ system, messages, json = false, temperature = 0
       model,
       temperature,
       messages: [{ role: "system", content: system }, ...messages],
-      ...(json ? { response_format: { type: "json_object" } } : {}),
-    }),
+      ...(json ? { response_format: { type: "json_object" } } : {})
+    })
   });
 
   if (!res.ok) {
