@@ -64,10 +64,13 @@ function demoReply(agent, message) {
 
 function propertyDemoReply(message) {
   const text = message.toLowerCase();
-  const budgetMatch = message.replace(/,/g, "").match(/(?:r\s*)?(\d{6,8})/i);
-  const budget = budgetMatch ? Number(budgetMatch[1]) : null;
-  const bedroomMatch = text.match(/(\d+)\s*(?:bed|bedroom)/);
-  const bedrooms = bedroomMatch ? Number(bedroomMatch[1]) : null;
+  const compact = text.replace(/[\s,]/g, "");
+  const millionMatch = text.match(/(?:r\s*)?(\d+(?:\.\d+)?)\s*m(?:illion)?\b/i);
+  const budgetMatch = compact.match(/(?:r)?(\d{6,8})/i);
+  const budget = millionMatch ? Number(millionMatch[1]) * 1000000 : budgetMatch ? Number(budgetMatch[1]) : null;
+  const bedroomMatch = text.match(/(\d+|one|two|three)\s*[- ]?\s*(?:bed|bedroom)/);
+  const bedroomWords = { one: 1, two: 2, three: 3 };
+  const bedrooms = bedroomMatch ? Number(bedroomMatch[1]) || bedroomWords[bedroomMatch[1]] : null;
   const suburbs = ["gardens", "observatory", "claremont", "sea point", "pinelands", "woodstock"];
   const suburb = suburbs.find((s) => text.includes(s));
   const matches = DEMO_PROPERTIES.filter((p) =>
