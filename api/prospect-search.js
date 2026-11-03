@@ -17,6 +17,7 @@ export default async function handler(req, res) {
   const industry = clip(body.industry, 100).trim();
   const titles = Array.isArray(body.titles) ? body.titles.slice(0, 8).map(x => clip(x, 60)) : [];
   const limit = Math.min(20, Math.max(5, Number(body.limit) || 20));
+  const companySize = ["any", "1-10", "11-50", "51-200", "201-500", "501+"].includes(body.companySize) ? body.companySize : "any";
   if (!area || !industry) return send(res, 400, { error: "Choose an area and industry." });
 
   const googleKey = process.env.GOOGLE_MAPS_API_KEY;
@@ -93,6 +94,8 @@ export default async function handler(req, res) {
       count: businesses.length,
       businesses,
       setup: { googleMaps: true, apollo: Boolean(apolloKey) },
+      companySizePreference: companySize,
+      companySizeNote: companySize === "any" ? "No company-size preference applied." : "Company-size preference recorded for review. Google Places does not reliably return employee counts, so verify size before qualification.",
       note: apolloKey
         ? "Review all matches before adding them to HubSpot. Apollo availability and email verification depend on your Apollo plan."
         : "Businesses were found through Google Maps. Add APOLLO_API_KEY in Vercel to enrich them with decision-makers."
