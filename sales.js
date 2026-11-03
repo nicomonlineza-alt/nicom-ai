@@ -33,7 +33,8 @@ if (prospectForm) {
           area: $("prospectArea").value.trim(),
           industry: $("prospectIndustry").value,
           titles,
-          limit: Number($("prospectLimit").value)
+          limit: Number($("prospectLimit").value),
+          companySize: $("prospectSize")?.value || "any"
         })
       });
       const data = await response.json();
