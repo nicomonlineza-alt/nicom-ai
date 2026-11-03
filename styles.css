@@ -230,3 +230,54 @@ a,button{ -webkit-tap-highlight-color:transparent}
 a:focus-visible,button:focus-visible{outline:2px solid #bce8cc;outline-offset:4px}
 @media(max-width:620px){.glass,.team-slider{border-radius:21px}.card{border-radius:19px}.hero-core{animation:none}.float-chip{animation:none}}
 @media(prefers-reduced-motion:reduce){.hero-layout>div:first-child,.hero-visual,.hero-core,.orbit-ring,.float-chip,.card,.price-card,.solution-row,.industry-row,.slide.active{animation:none!important}}
+
+
+/* FUTURE NAV / command-deck navigation */
+.nav{
+  position:sticky;top:12px;margin:0 auto;width:calc(100% - 28px);max-width:1500px;
+  border:1px solid rgba(155,245,213,.2);border-radius:20px;
+  background:linear-gradient(110deg,rgba(5,18,25,.88),rgba(8,24,32,.72));
+  box-shadow:0 12px 42px rgba(0,0,0,.34),inset 0 1px 0 rgba(255,255,255,.1),0 0 28px rgba(0,220,170,.055);
+  backdrop-filter:blur(28px) saturate(160%);-webkit-backdrop-filter:blur(28px) saturate(160%);
+  transition:border-color .25s,box-shadow .25s,background .25s;
+}
+.nav:after{
+  content:"";position:absolute;left:7%;right:7%;bottom:-1px;height:1px;pointer-events:none;
+  background:linear-gradient(90deg,transparent,rgba(0,230,180,.7),rgba(83,176,255,.55),transparent);
+  opacity:.8;
+}
+.nav:hover{border-color:rgba(155,245,213,.3);box-shadow:0 14px 46px rgba(0,0,0,.38),inset 0 1px 0 rgba(255,255,255,.12),0 0 34px rgba(0,220,170,.08)}
+.navin{min-height:76px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.nav .brand{flex:0 0 auto;justify-self:auto;grid-column:auto;grid-row:auto;font-size:1.22rem;letter-spacing:-.045em}
+.nav .brand img{width:43px;height:43px;border:1px solid rgba(255,255,255,.35);padding:3px;box-shadow:0 0 22px rgba(0,224,177,.2)}
+.nav #nav{position:static;display:flex;align-items:center;justify-content:flex-end;gap:clamp(9px,1.35vw,19px);flex:1;grid-column:auto;grid-row:auto}
+.nav #nav>a:not(.btn){position:relative;padding:9px 1px;color:#dce9ed;font-size:.88rem;font-weight:650;letter-spacing:.01em}
+.nav #nav>a:not(.btn):before{content:"";position:absolute;left:50%;right:50%;bottom:2px;height:2px;border-radius:3px;background:linear-gradient(90deg,#47f0bd,#62baff);box-shadow:0 0 12px rgba(71,240,189,.65);transition:left .22s,right .22s}
+.nav #nav>a:not(.btn):hover:before,.nav #nav>a:not(.btn):focus-visible:before{left:0;right:0}
+.nav #nav>a:not(.btn):hover,.nav #nav>a:not(.btn):focus-visible{color:#fff;text-shadow:0 0 15px rgba(71,240,189,.35);outline:none}
+.nav #nav .nav-cta{display:inline-flex;gap:12px;align-items:center;margin-left:5px;padding:10px 15px;border:1px solid rgba(130,255,213,.52);border-radius:12px;background:linear-gradient(115deg,#9af7d4,#65d9cb 52%,#8acaff);color:#04151a;font-size:.82rem;font-weight:850;box-shadow:0 0 22px rgba(72,230,190,.18),inset 0 1px 0 rgba(255,255,255,.7);white-space:nowrap}
+.nav #nav .nav-cta b{font-size:1.05rem;transition:transform .2s}
+.nav #nav .nav-cta:hover{color:#04151a;transform:translateY(-2px);box-shadow:0 0 28px rgba(72,230,190,.34),inset 0 1px 0 rgba(255,255,255,.8)}
+.nav #nav .nav-cta:hover b{transform:translate(2px,-2px)}
+.nav .mobile{display:none;border:1px solid rgba(132,238,218,.32);border-radius:12px;background:rgba(94,220,202,.1);color:#b8ffe9;font-size:1.15rem;width:44px;height:42px;cursor:pointer;box-shadow:inset 0 1px 0 rgba(255,255,255,.1)}
+@media(max-width:980px){
+ .navin{gap:14px}
+ .nav #nav{gap:10px}
+ .nav #nav>a:not(.btn){font-size:.8rem}
+ .nav #nav .nav-cta{padding:9px 11px;font-size:.76rem}
+}
+@media(max-width:760px){
+ .nav{top:8px;width:calc(100% - 18px);border-radius:17px}
+ .navin{min-height:68px;display:flex;justify-content:space-between}
+ .nav .brand{font-size:1.12rem}
+ .nav .brand img{width:40px;height:40px}
+ .nav .mobile{display:grid;place-items:center}
+ .nav #nav{display:none;position:absolute;top:calc(100% + 9px);left:0;right:0;flex-direction:column;align-items:stretch;gap:3px;padding:13px;border:1px solid rgba(155,245,213,.23);border-radius:17px;background:rgba(4,15,22,.96);backdrop-filter:blur(26px);-webkit-backdrop-filter:blur(26px);box-shadow:0 22px 50px rgba(0,0,0,.48),inset 0 1px 0 rgba(255,255,255,.1)}
+ .nav #nav.open{display:flex;animation:navDrop .22s ease-out}
+ .nav #nav>a:not(.btn){padding:11px 13px;font-size:.94rem;border-radius:9px}
+ .nav #nav>a:not(.btn):hover{background:rgba(95,231,195,.08)}
+ .nav #nav>a:not(.btn):before{display:none}
+ .nav #nav .nav-cta{justify-content:center;margin:7px 0 0;padding:12px;font-size:.88rem}
+}
+@keyframes navDrop{from{opacity:0;transform:translateY(-7px)}to{opacity:1;transform:translateY(0)}}
+@media(prefers-reduced-motion:reduce){.nav,.nav *{transition:none!important;animation:none!important}}
